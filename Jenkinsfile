@@ -15,5 +15,10 @@ pipeline {
         }
       }
     }
+    stage('') {
+      steps {
+        build(job: 'simple-java-maven-app', propagate: true, quietPeriod: 5, wait: true)
+      }
+    }
   }
 }
