@@ -3,21 +3,26 @@ pipeline {
   stages {
     stage('Build') {
       parallel {
-        stage('Build') {
+        stage('Build-test-1') {
           steps {
-            sh 'mvn clean package'
+            build 'Build-test-1'
           }
         }
-        stage('abcd') {
+        stage('Build-test-2') {
           steps {
-            build 'abcd'
+            build 'Build-test-2'
+          }
+        }
+        stage('Build-test-3') {
+          steps {
+            build 'Build-test-3'
           }
         }
       }
     }
-    stage('') {
+    stage('Build-test-4') {
       steps {
-        build(job: 'simple-java-maven-app', propagate: true, quietPeriod: 5, wait: true)
+        build 'Build-test-4'
       }
     }
   }
